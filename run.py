@@ -38,8 +38,8 @@ embeddings = OpenAIEmbeddings()
 chain = LLMChain(llm=llm, prompt=prompt)
 
 # Initialize Pinecone
-pc = pinecone.init(api_key=os.getenv("PINECONE_API_KEY"))
-index = pc.Index("langchain-stsv")
+pinecone.init(api_key=os.getenv("PINECONE_API_KEY"))
+index = pinecone.Index("langchain-stsv")
 
 @app.route('/ask', methods=['POST'])
 def ask_question():
