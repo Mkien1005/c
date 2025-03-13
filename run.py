@@ -6,7 +6,7 @@ from langchain import PromptTemplate
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 import os
 import pinecone
-from langchain_pinecone import PineconeVectorStore
+from langchain.vectorstores import Pinecone
 from langchain.embeddings import OpenAIEmbeddings
 from flask_cors import CORS
 
@@ -49,7 +49,7 @@ def ask_question():
     # Lấy thông tin context từ Pinecone
 
     
-    vector_store = PineconeVectorStore(index=index, embedding=embeddings)
+    vector_store = Pinecone(index=index, embedding=embeddings)
     result = vector_store.similarity_search(question)
 
     context = " ".join([doc.page_content for doc in result])

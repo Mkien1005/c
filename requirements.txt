@@ -3,3 +3,4 @@ langchain==0.0.137
 pinecone-client==2.2.1
 flask
 gunicorn
+flask_cors
